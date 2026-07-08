@@ -1,0 +1,28 @@
+# CI: lint (ruff) + testes (pytest) a cada push/PR.
+# O OCR real (Tesseract) nao roda aqui — os parsers sao testados como funcoes puras;
+# use scripts/validar_ocr_amostras.py localmente para validar o OCR de verdade.
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Lint (ruff)
+        run: ruff check .
+
+      - name: Testes (pytest)
+        run: pytest -q

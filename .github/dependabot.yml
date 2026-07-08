@@ -1,0 +1,34 @@
+# Atualizações automáticas de dependências (abre PRs semanais).
+# Importante aqui porque o projeto processa arquivos enviados por usuários
+# (pdfplumber/poppler/OpenCV/Pillow têm histórico de CVEs).
+#
+# Para reduzir ruído: minor/patch vêm AGRUPADOS (1 PR por ecossistema).
+# Majors continuam vindo em PRs separadas — decisão manual, nunca auto-merge.
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: weekly
+    groups:
+      python-deps:
+        update-types: [minor, patch]
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        update-types: [minor, patch, major]  # majors de actions são baixo risco
+
+  - package-ecosystem: docker
+    directory: "/"
+    schedule:
+      interval: weekly
+    # Segura o major do Python (ex.: 3.11 -> 3.14): a CI roda em 3.11 fixo e não
+    # builda a imagem, então um bump de major aqui não é validado. Atualizar só
+    # de propósito, testando a imagem localmente.
+    ignore:
+      - dependency-name: "python"
+        update-types: [version-update:semver-major]

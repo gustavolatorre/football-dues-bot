@@ -1,0 +1,25 @@
+# Segredos e ambiente
+.env
+*.env
+!.env.example
+
+# Amostras (comprovantes com PII) e artefatos do Claude/SDD — fora do git
+samples/
+.claude/
+
+# Banco local (SQLite dev)
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# OS / tmp
+.DS_Store
+Thumbs.db
+tmp/
