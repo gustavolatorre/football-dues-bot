@@ -1,4 +1,4 @@
-# Atualizações automáticas de dependências (abre PRs semanais).
+# Atualizações automáticas de dependências (abre PRs mensais).
 # Importante aqui porque o projeto processa arquivos enviados por usuários
 # (pdfplumber/poppler/OpenCV/Pillow têm histórico de CVEs).
 #
@@ -9,7 +9,7 @@ updates:
   - package-ecosystem: pip
     directory: "/"
     schedule:
-      interval: weekly
+      interval: monthly
     groups:
       python-deps:
         update-types: [minor, patch]
@@ -17,7 +17,7 @@ updates:
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
-      interval: weekly
+      interval: monthly
     groups:
       github-actions:
         update-types: [minor, patch, major]  # majors de actions são baixo risco
@@ -25,7 +25,7 @@ updates:
   - package-ecosystem: docker
     directory: "/"
     schedule:
-      interval: weekly
+      interval: monthly
     # Segura o major do Python (ex.: 3.11 -> 3.14): a CI roda em 3.11 fixo e não
     # builda a imagem, então um bump de major aqui não é validado. Atualizar só
     # de propósito, testando a imagem localmente.
