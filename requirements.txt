@@ -1,0 +1,10 @@
+python-telegram-bot[job-queue]==21.6
+SQLAlchemy==2.0.51
+psycopg2-binary==2.9.10
+python-dotenv==1.0.1
+pytesseract==0.3.13
+pdfplumber==0.11.4
+pdf2image==1.17.0
+opencv-python-headless==4.10.0.84
+Pillow==11.0.0
+rapidfuzz==3.14.5

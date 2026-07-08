@@ -1,0 +1,21 @@
+# Ambiente Python local (Windows) — nao vai para a imagem Linux
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Segredos e dados (passados em runtime via env-file / volume)
+.env
+*.db
+data/
+
+# PII — comprovantes reais nao entram na imagem
+samples/
+
+# Metadados / docs / git
+.git/
+.gitignore
+.claude/
+*.md
+tests/
